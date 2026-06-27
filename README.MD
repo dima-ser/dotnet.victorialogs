@@ -6,6 +6,11 @@ Allows logging from your .NET app directly to [VictoriaLogs](https://docs.victor
 ```
  dotnet add reference ../Dimaser.Dotnet.VictoriaLogs.csproj
 ```
+or as a nuget from local nuget package feed
+```
+dotnet add package Dimaser.Dotnet.VictoriaLogs --source [/your-local/package-source]
+```
+
 ### Add config
 In your appsettings.json
 
