@@ -48,7 +48,10 @@ The application will now log everything to VictoriaLogs. You can limit which [lo
     }
 ```
 ## Log fields
-The library will log the following fields to VictoriaLogs. `_time` and `_msg`  are required by VictoriaLogs. 
+The library will log the following fields to VictoriaLogs.  
+
+### General fields
+These fields will be present in all logs. `_time` and `_msg`  are required by VictoriaLogs.
 
 | Field name  | Description |
 | ----------- | ----------- |
@@ -59,11 +62,16 @@ The library will log the following fields to VictoriaLogs. `_time` and `_msg`  a
 | category    | Log category as defined in https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line#log-category |
 | hostname    | Machine name from `Environment.MachineName` |
 | app_name    | `AppName` as specified in configuration or `Environment.ApplicationName` |
+
+### Optional fields
+These fields may or may not be present in the log depending on the type of log
+| Field name  | Description |
+| ----------- | ----------- |
 | remote_ip   | IP address of the current request |
-| path        | Path of the current web request |
-| query       | Query string of the current request (if any) |
-| method      | Current request HTTP method (GET, POST, etc) |
-| user_id     | Currently authenticated user (if any) |
+| path        | Path of the current web request  |
+| query       | Query string of the current request |
+| method      | Current request HTTP method |
+| user_id     | Currently authenticated user  |
 | user_agent  | User agent of the current request |
-| ex.type     | Exception type (if any) |
-| ex.stacktrace | Stack trace (if any) |
+| ex.type     | Exception type |
+| ex.stacktrace | Exception stack trace  |
