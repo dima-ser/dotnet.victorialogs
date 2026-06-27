@@ -22,7 +22,7 @@ In your appsettings.json
   }
 }
 ```
-`Endpoint`: required. URL to VictoriaLogs [HTTP JSON Stream APi](https://docs.victoriametrics.com/victorialogs/data-ingestion/#json-stream-api). If this is not provided or empty, logging will silently fail.
+`Endpoint`: required. URL to VictoriaLogs [HTTP JSON Stream API](https://docs.victoriametrics.com/victorialogs/data-ingestion/#json-stream-api). If this is not provided or empty, logging will silently fail.
 
 `AppName`: optional. Overrides the `app_name` field that gets passed to VictoriaLogs. If not provided, the default environment `ApplicationName` will be used.
 
