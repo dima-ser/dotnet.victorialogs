@@ -1,4 +1,4 @@
-# VictoriaLogs Logging Provider
+# VictoriaLogs .NET Logging Provider
 Allows logging from your .NET app directly to [VictoriaLogs](https://docs.victoriametrics.com/victorialogs/)
 ## How to use
 ### Reference in your project
@@ -38,7 +38,7 @@ builder.Logging.AddVictoriaLogs(
     builder.Environment);
 ```
 
-The application will now log everything to VictoriaLogs. You can limit which log levels get logged by changing `LogLevel` under `Logging` in your `appsettings.json`. For example, if you only want to log `Error` and above, set:
+The application will now log everything to VictoriaLogs. You can limit which [log levels](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line#log-level) get logged by changing `LogLevel` under `Logging` in your `appsettings.json`. For example, if you only want to log `Error` and above, set:
 
 ```json
 "Logging": {
@@ -47,3 +47,23 @@ The application will now log everything to VictoriaLogs. You can limit which log
       "Microsoft.AspNetCore": "Error"
     }
 ```
+## Log fields
+The library will log the following fields to VictoriaLogs. `_time` and `_msg`  are required by VictoriaLogs. 
+
+| Field name  | Description |
+| ----------- | ----------- |
+| _time       | Log timestamp in UTC. |
+| _msg        | Log message. In case of exceptions, this will contain `Exception.Message` |
+| _stream     | Combination of `hostname` and `app_name` to uniquely identify application as per [VictoriaLogs docs](https://docs.victoriametrics.com/victorialogs/keyconcepts/#stream-fields). This reduces disk space usage and improves search performance in VictoriaLogs.
+| level       | Log level  as defined in https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line#log-level |
+| category    | Log category as defined in https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line#log-category |
+| hostname    | Machine name from `Environment.MachineName` |
+| app_name    | `AppName` as specified in configuration or `Environment.ApplicationName` |
+| remote_ip   | IP address of the current request |
+| path        | Path of the current web request |
+| query       | Query string of the current request (if any) |
+| method      | Current request HTTP method (GET, POST, etc) |
+| user_id     | Currently authenticated user (if any) |
+| user_agent  | User agent of the current request |
+| ex.type     | Exception type (if any) |
+| ex.stacktrace | Stack trace (if any) |
