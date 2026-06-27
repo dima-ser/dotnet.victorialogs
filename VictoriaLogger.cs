@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 
-namespace VictoriaLogs.Logging;
+namespace Dimaser.Dotnet.VictoriaLogs;
 
 public class VictoriaLogger : ILogger
 {

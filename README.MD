@@ -4,7 +4,7 @@ Allows logging from your .NET app directly to [VictoriaLogs](https://docs.victor
 ### Reference in your project
 
 ```
- dotnet add reference ../VictoriaLogs/VictoriaLogs.Logging.csproj
+ dotnet add reference ../Dimaser.Dotnet.VictoriaLogs.csproj
 ```
 ### Add config
 In your appsettings.json
@@ -24,7 +24,7 @@ In your appsettings.json
 ### Register the logging provider
 In your `Program.cs`
 ```c#
-using VictoriaLogs.Logging;
+using Dimaser.Dotnet.VictoriaLogs;
 
 var builder = WebApplication.CreateBuilder(args);
 

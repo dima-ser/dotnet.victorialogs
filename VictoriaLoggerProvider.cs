@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
-namespace VictoriaLogs.Logging;
+namespace Dimaser.Dotnet.VictoriaLogs;
 
 public class VictoriaLoggerProvider : ILoggerProvider
 {

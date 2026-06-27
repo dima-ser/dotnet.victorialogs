@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 
-namespace VictoriaLogs.Logging;
+namespace Dimaser.Dotnet.VictoriaLogs;
 
 public static class VictoriaLoggingExtensions
 {
