@@ -11,20 +11,22 @@ or as a nuget from local nuget package feed
 dotnet add package Dimaser.Dotnet.VictoriaLogs --source [/your-local/package-source]
 ```
 
-### Add config
-In your appsettings.json
+### Configure
+In your `appsettings.json`, add section called `VictoriaLogsOptions`:
 
 ```json
 {
+  ...,
   "VictoriaLogsOptions": {
     "Endpoint": "http://localhost:9428/insert/jsonline",
     "AppName": "MyApp"
   }
 }
 ```
-`Endpoint`: required. URL to VictoriaLogs [HTTP JSON Stream API](https://docs.victoriametrics.com/victorialogs/data-ingestion/#json-stream-api). If this is not provided or empty, logging will silently fail.
-
-`AppName`: optional. Overrides the `app_name` field that gets passed to VictoriaLogs. If not provided, the default environment `ApplicationName` will be used.
+| Config parameter | Description |
+|----------|--------|
+| **Endpoint** | Required. URL to VictoriaLogs [HTTP JSON Stream API](https://docs.victoriametrics.com/victorialogs/data-ingestion/#json-stream-api). If this is not provided or empty, logging will silently fail. |
+| **AppName** | Optional. Overrides the `app_name` field that gets passed to VictoriaLogs. If not provided, the default environment `ApplicationName` will be used. |
 
 ### Register the logging provider
 In your `Program.cs`
@@ -36,6 +38,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddVictoriaLogs(
     builder.Configuration,
     builder.Environment);
+```
+If you only want to log to VictoriaLogs in Production:
+```c#
+if (!builder.Environment.IsDevelopment())
+{
+    builder.Logging.AddVictoriaLogs(
+        builder.Configuration,
+        builder.Environment);
+}
 ```
 
 The application will now log everything to VictoriaLogs. You can limit which [log levels](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line#log-level) get logged by changing `LogLevel` under `Logging` in your `appsettings.json`. For example, if you only want to log `Error` and above, set:
@@ -67,10 +78,9 @@ These fields will be present in all logs. `_time` and `_msg`  are required by Vi
 These fields may or may not be present in the log depending on the type of log
 | Field name  | Description |
 | ----------- | ----------- |
-| remote_ip   | IP address of the current request |
-| path        | Path of the current web request  |
-| query       | Query string of the current request |
+| url         | Full URL of the current request, including query string |
 | method      | Current request HTTP method |
+| remote_ip   | IP address of the current request |
 | user_id     | Currently authenticated user  |
 | user_agent  | User agent of the current request |
 | ex.type     | Exception type |
