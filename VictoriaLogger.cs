@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Dimaser.Dotnet.VictoriaLogs;
 
@@ -45,10 +46,10 @@ public class VictoriaLogger : ILogger
                 category = _category,
                 hostname = Environment.MachineName,
                 app_name = _options.AppName,
-                remote_ip = context?.Connection?.RemoteIpAddress?.ToString(),
-                path = request?.Path.Value,
-                query = request?.QueryString.Value,
+
+                url = request?.GetDisplayUrl(),
                 method = request?.Method,
+                remote_ip = context?.Connection?.RemoteIpAddress?.ToString(),
                 user_id = context?.User?.Identity?.IsAuthenticated == true ? context.User.Identity.Name : null,
                 user_agent = request?.Headers["User-Agent"].ToString(),
                 ex = exception == null ? null : new
