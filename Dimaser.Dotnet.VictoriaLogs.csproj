@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Dimaser.Dotnet.VictoriaLogs</PackageId>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Authors>dima-ser</Authors>
     <Description>ASP.NET Core ILogger provider for VictoriaLogs</Description>
     <RepositoryUrl>https://github.com/dima-ser/dotnet.victorialogs</RepositoryUrl>
