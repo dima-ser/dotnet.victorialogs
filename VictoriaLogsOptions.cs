@@ -1,4 +1,4 @@
-namespace Dimaser.Dotnet.VictoriaLogs;
+namespace Dimaser.VictoriaLogs.Dotnet;
 
 public class VictoriaLogsOptions
 {

@@ -8,13 +8,13 @@ Allows logging from your .NET app directly to [VictoriaLogs](https://docs.victor
 If adding from nuget.org:
 
 ```
- dotnet add package Dimaser.Dotnet.VictoriaLogs
+ dotnet add package Dimaser.VictoriaLogs.Dotnet
 ```
 
 If building from source, clone the repo and build the project. Create a local nuget package source, then publish the .nupkg to your local package store. Then add it to your project:
 
 ```
-dotnet add package Dimaser.Dotnet.VictoriaLogs --source [/your-local/package-source]
+dotnet add package Dimaser.VictoriaLogs.Dotnet --source [/your-local/package-source]
 ```
 
 ### Configure
@@ -37,7 +37,7 @@ In your `appsettings.json`, add section called `VictoriaLogsOptions`:
 ### Register the logging provider
 In your `Program.cs`
 ```c#
-using Dimaser.Dotnet.VictoriaLogs;
+using Dimaser.VictoriaLogs.Dotnet;
 
 var builder = WebApplication.CreateBuilder(args);
 

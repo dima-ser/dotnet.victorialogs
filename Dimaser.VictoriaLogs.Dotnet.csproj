@@ -4,12 +4,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>Dimaser.Dotnet.VictoriaLogs</PackageId>
-    <Version>0.6.3</Version>
+    <PackageId>Dimaser.VictoriaLogs.Dotnet</PackageId>
+    <Version>0.6.4</Version>
     <Authors>dima-ser</Authors>
     <Description>ASP.NET Core ILogger provider for VictoriaLogs</Description>
     <RepositoryUrl>https://github.com/dima-ser/dotnet.victorialogs</RepositoryUrl>
-    <RootNamespace>Dimaser.Dotnet.VictoriaLogs</RootNamespace>
+    <RootNamespace>Dimaser.VictoriaLogs.Dotnet</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

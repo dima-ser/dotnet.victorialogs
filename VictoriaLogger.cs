@@ -4,7 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Dimaser.Dotnet.VictoriaLogs;
+namespace Dimaser.VictoriaLogs.Dotnet;
 
 public class VictoriaLogger : ILogger
 {
